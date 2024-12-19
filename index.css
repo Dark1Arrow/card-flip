@@ -1,0 +1,148 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins';
+}
+
+body {
+    background-image: url(bg.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 500px;
+    height: 330px;
+    border-radius: 20px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 600px;
+}
+.card:hover > .back{
+    transform: rotateY(0deg);
+    transition: transform 1.5s;
+}
+.card:hover > .front{
+    transform: rotateY(180deg);
+    transition: transform 1.5s;
+}
+
+.front {
+    width: 500px;
+    height: 330px;
+    border-radius: 20px;
+    background-color: #1E1F26;
+    position: absolute;
+    border: 2px solid #7198A1;
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+    transition: transform 1.5s;
+}
+
+.star {
+    width: 500px;
+    height: 330px;
+    background-image: url(star.svg);
+    background-position: center;
+    position: absolute;
+    z-index: 10;
+    transition: transform 1ms;
+}
+
+.box {
+    width: 500px;
+    height: 330px;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 20;
+    overflow: hidden;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-color: #53AADA;
+}
+
+.circle1 {
+    transform: translate(-50px, -50px);
+}
+
+.circle2 {
+    transform: translate(410px);
+}
+
+.profile {
+    width: 500px;
+    height: 330px;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.discription {
+    width: 500px;
+    height: 35%;
+    background: linear-gradient(rgba(30, 31, 38, 0.49), rgba(255, 255, 255, 0.216));
+    backdrop-filter: blur(2px);
+    border: 1px solid #8f8f8f28;
+    border-radius: 20px;
+    color: white;
+}
+
+.image {
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    background-image: url(image.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.dis-heading {
+    margin: 20px 0px 0px 30px;
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.dis-content {
+    margin: 0px 0px 0px 30px;
+    font-size: large;
+    font-weight: 300;
+}
+
+
+.back {
+    width: 500px;
+    height: 330px;
+    border-radius: 20px;
+    border: 2px solid #D4F0FF;
+    background-color: #DAE9FF;
+    color: #4F4F4F;
+    position: absolute;
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+    transition: transform 1.5s;
+}
+
+.back-top {
+    display: flex;
+}
+.back-bottom{
+    display: flex;
+    gap: 20px;
+    font-size: large;
+    
+}
