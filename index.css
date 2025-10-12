@@ -95,7 +95,7 @@ body {
 .discription {
     width: 500px;
     height: 35%;
-    background: linear-gradient(rgba(30, 31, 38, 0.49), rgba(255, 255, 255, 0.216));
+    background: linear-gradient(rgba(30, 31, 38, 0.49), rgb(60 110 138));
     backdrop-filter: blur(2px);
     border: 1px solid #8f8f8f28;
     border-radius: 20px;
