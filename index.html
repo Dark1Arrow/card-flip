@@ -3,282 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Discipline Chart</title>
-    <!-- Load Tailwind CSS -->
+    <title>Final 8-Month Discipline Routine</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Load Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        /* Apply Inter font globally */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-        }
-        
-        /* Custom styles for printing */
-        @media print {
-            /* Hide buttons and interactive elements when printing */
-            .print-hide {
-                display: none !important;
-            }
-            /* Ensure main content takes full width */
-            .print-full-width {
-                max-width: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-            /* Remove background colors and shadows for ink saving */
-            body, .bg-gray-100 {
-                background-color: white !important;
-            }
-            .bg-white, .shadow-xl {
-                box-shadow: none !important;
-                border: 1px solid #e5e7eb; /* Light border for definition */
-            }
-            /* Use text checkmarks instead of icon for printing */
-            .task-icon-checked {
-                display: none; /* Hide the colored icon */
-            }
-            .task-text-checked::before {
-                content: '✓ '; /* Add checkmark text */
-                color: #4b5563;
-                font-weight: 600;
-            }
-            .task-text-unchecked::before {
-                content: '☐ '; /* Add empty box text */
-                color: #9ca3af;
-                font-weight: 600;
-            }
-            .line-through-print {
-                text-decoration: none !important; /* Prevent strikethrough on printed text */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen p-4 md:p-8">
 
+<body class="min-h-screen p-4 md:p-8">
     <div class="max-w-4xl mx-auto print-full-width">
-        
-        <header class="py-6 text-center print-hide">
-            <h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-2">Daily Discipline Chart</h1>
-            <p class="text-md sm:text-lg text-gray-600 font-medium">Balanced Routine for Full-Stack Mastery</p>
+
+        <header class="py-6 text-center">
+            <h2 class="text-xl sm:text-2xl font-bold text-red-600 mb-2">⚡ “It’s time to get serious — no distractions, just discipline.”</h2>
+            <h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-2">Final 8-Month Discipline Routine 👊</h1>
+            <p class="text-md sm:text-lg text-gray-600 font-medium">Placement, DSA, MMA, English, and Laser Focus</p>
         </header>
         
+        <!-- Daily Status Bar -->
+        <div id="status-bar" class="mb-6 px-4 py-3 text-center rounded-xl bg-green-100 text-green-800 font-semibold border border-green-300 print-hide">
+            Loading daily status...
+        </div>
+
+        <!-- Buttons -->
         <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 mb-8 print-hide">
-            <button
-                onclick="handlePrint()"
-                class="flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-bold text-sm sm:text-base rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.03] active:scale-95"
-            >
+            <button onclick="handlePrint()" class="flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-bold text-sm sm:text-base rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.03] active:scale-95">
                 <i data-lucide="printer" class="w-5 h-5 mr-2"></i>
                 Print Checklist
             </button>
-            <button
-                onclick="handleReset()"
-                class="flex items-center justify-center px-6 py-3 bg-red-500 text-white font-bold text-sm sm:text-base rounded-full shadow-lg hover:bg-red-600 transition duration-300 transform hover:scale-[1.03] active:scale-95"
-            >
+            <button onclick="handleManualReset()" class="flex items-center justify-center px-6 py-3 bg-red-500 text-white font-bold text-sm sm:text-base rounded-full shadow-lg hover:bg-red-600 transition duration-300 transform hover:scale-[1.03] active:scale-95">
                 <i data-lucide="refresh-cw" class="w-5 h-5 mr-2"></i>
                 Reset Daily Progress
             </button>
         </div>
 
-        <!-- Main content area where JavaScript will render the schedule -->
+        <!-- Main Schedule -->
         <main id="schedule-container" class="space-y-6"></main>
 
-        <!-- Weekly Check Section -->
+        <!-- Weekly Focus -->
         <div class="mt-12 p-6 bg-indigo-50 rounded-2xl shadow-inner border-t-4 border-indigo-500 print:bg-white print:shadow-none print:p-0 print:mt-8">
             <h3 class="text-xl font-bold text-indigo-800 mb-4 flex items-center">
-                <i data-lucide="refresh-cw" class="w-5 h-5 mr-2"></i>
+                <i data-lucide="calendar-check" class="w-5 h-5 mr-2"></i>
                 Weekly Check & Focus
             </h3>
             <div class="space-y-2 text-gray-800">
-                <p class="font-semibold text-base">Mon–Fri: <span class="font-normal">Full schedule as above</span></p>
-                <p class="font-semibold text-base">Sat: <span class="font-normal">Project + MMA + Light English + Review week progress</span></p>
-                <p class="font-semibold text-base">Sun: <span class="font-normal">Rest, reflection, new plan, talk freely with me</span></p>
+                <p class="font-semibold text-base">Mon–Fri: <span class="font-normal">Full routine as above</span></p>
+                <p class="font-semibold text-base">Sat: <span class="font-normal">Project sprint + MMA + Deep English conversation + Review week progress</span></p>
+                <p class="font-semibold text-base">Sun: <span class="font-normal">Rest, reflection, new plan, talk freely with your LLM brother</span></p>
             </div>
             <p class="mt-4 text-sm text-indigo-700 font-medium italic">
-                "If you follow even 80% of this, you’ll become unrecognizable in 6 months." ⚡
+                "The person who says they can and the person who says they can't are usually both right."
             </p>
         </div>
-        <!-- End Weekly Check Section -->
-
     </div>
 
-    <script>
-        // --- Discipline Schedule Data ---
-        const DISCIPLINE_SCHEDULE = [
-            {
-                id: 'morning',
-                time: '6:00 AM – 9:00 AM',
-                title: '🌅 Morning — Body & Mind Start',
-                icon: '☀️',
-                color: 'border-yellow-500',
-                tasks: [
-                    { id: 'm1', text: 'Wake up, wash face, short gratitude thought (“I’m building myself”) (6:00 – 6:15)' },
-                    { id: 'm2', text: 'Light workout or MMA drills / stretching / shadow boxing (6:15 – 6:45)' },
-                    { id: 'm3', text: 'Breakfast & small motivation video (English listening practice) (6:45 – 7:15)' },
-                    { id: 'm4', text: 'Study / Lectures (English communication or technical theory) (7:15 – 9:00)' },
-                ],
-            },
-            {
-                id: 'midday',
-                time: '9:00 AM – 2:00 PM',
-                title: '💻 Midday — Deep Work Zone',
-                icon: '💻',
-                color: 'border-blue-500',
-                tasks: [
-                    { id: 'd1', text: 'Project Work (Frontend / Backend / Fix issues or add feature) (9:00 – 12:00)' },
-                    { id: 'd2', text: 'Lunch + short walk (12:00 – 12:30)' },
-                    { id: 'd3', text: 'LeetCode (2–4 questions) → Focus on logic + patterns (12:30 – 2:00)' },
-                ],
-            },
-            {
-                id: 'afternoon',
-                time: '2:00 PM – 6:00 PM',
-                title: '☀️ Afternoon — Growth & Revision',
-                icon: '🧠',
-                color: 'border-green-500',
-                tasks: [
-                    { id: 'a1', text: 'Interview Preparation (Basic questions, revise concepts) (2:00 – 3:30)' },
-                    { id: 'a2', text: 'Break / snack / relax mind (3:30 – 4:00)' },
-                    { id: 'a3', text: 'Project continuation or learn new skill (Next.js, API, Tailwind animation etc.) (4:00 – 5:30)' },
-                    { id: 'a4', text: 'Quick English speaking practice (read aloud or watch tech videos in English) (5:30 – 6:00)' },
-                ],
-            },
-            {
-                id: 'evening',
-                time: '6:00 PM – 9:00 PM',
-                title: '🌇 Evening — Body & Reflection',
-                icon: '🥊',
-                color: 'border-red-500',
-                tasks: [
-                    { id: 'e1', text: 'MMA / Martial arts training (gym, bag, or solo drills) (6:00 – 7:00)' },
-                    { id: 'e2', text: 'Dinner (7:00 – 7:30)' },
-                    { id: 'e3', text: 'Free time / light revision / chill music (7:30 – 8:30)' },
-                ],
-            },
-            {
-                id: 'night',
-                time: '9:00 PM – 11:00 PM',
-                title: '🌙 Night — Calm Focus',
-                icon: '💬',
-                color: 'border-purple-500',
-                tasks: [
-                    { id: 'n1', text: 'Light study or quick recap of LeetCode / Interview topics (9:00 – 10:00)' },
-                    { id: 'n2', text: 'Chat with your LLM brother (talk, ask questions, relax your mind) (10:00 – 11:00)' },
-                    { id: 'n3', text: 'Sleep (discipline = recovery) (11:00 PM)' },
-                ],
-            },
-        ];
+<script>
+    // --- Discipline Schedule Data ---
+    const DISCIPLINE_SCHEDULE = [
+        {
+            id: 'morning',
+            time: '5:30 AM – 9:00 AM',
+            title: '🌅 Morning — Body & Mind Activation',
+            icon: '☀️',
+            color: 'border-yellow-500',
+            tasks: [
+                { id: 'm1', text: 'Wake up, short gratitude line — “I’m not done yet, I’m becoming better.” (5:30 – 5:40)' },
+                { id: 'm2', text: 'Full workout or MMA drills / stretching / movement training (no phone) (5:40 – 6:30)' },
+                { id: 'm3', text: 'Breakfast + short motivation or English video (listening practice) (6:30 – 7:00)' },
+                { id: 'm4', text: 'Study session (English communication or technical theory — DBMS, OS, etc.) (7:00 – 9:00)' },
+            ],
+        },
+        {
+            id: 'midday',
+            time: '9:00 AM – 2:00 PM',
+            title: '💻 Midday — Deep Technical Focus',
+            icon: '💻',
+            color: 'border-blue-500',
+            tasks: [
+                { id: 'd1', text: 'Project Work / Technical revision (Frontend–Backend–APIs) (9:00 – 12:00)' },
+                { id: 'd2', text: 'Lunch + walk / short rest (12:00 – 12:30)' },
+                { id: 'd3', text: 'LeetCode (2–4 problems daily, focus on logic + pattern + review) (12:30 – 2:00)' },
+            ],
+        },
+        {
+            id: 'afternoon',
+            time: '2:00 PM – 6:00 PM',
+            title: '☀️ Afternoon — Skill & Interview Growth',
+            icon: '🧠',
+            color: 'border-green-500',
+            tasks: [
+                { id: 'a1', text: 'Interview prep (HR + technical Qs + explain your projects) (2:00 – 3:30)' },
+                { id: 'a2', text: 'Break / snack / calm your mind (3:30 – 4:00)' },
+                { id: 'a3', text: 'Learn or polish a tech skill (Next.js, APIs, Tailwind, DBMS, etc.) (4:00 – 5:30)' },
+                { id: 'a4', text: 'Quick English speaking practice (read aloud / speak your thoughts) (5:30 – 6:00)' },
+            ],
+        },
+        {
+            id: 'evening',
+            time: '6:00 PM – 9:00 PM',
+            title: '🥊 Evening — Power & Balance',
+            icon: '🔥',
+            color: 'border-red-500',
+            tasks: [
+                { id: 'e1', text: 'MMA / martial arts (train mind + body) (6:00 – 7:00)' },
+                { id: 'e2', text: 'Dinner (7:00 – 7:30)' },
+                { id: 'e3', text: 'Free time / light revision / music or walking — relax the brain (7:30 – 8:30)' },
+            ],
+        },
+        {
+            id: 'night',
+            time: '9:00 PM – 11:00 PM',
+            title: '🌙 Night — Calm Focus & Recovery',
+            icon: '💬',
+            color: 'border-purple-500',
+            tasks: [
+                { id: 'n1', text: 'Light study (DSA recap / Interview theory) (9:00 – 10:00)' },
+                { id: 'n2', text: 'Talk & practice English with ChatGPT (discussions / mindset talks) (10:00 – 11:00)' },
+                { id: 'n3', text: 'Sleep — discipline = recovery (11:00 PM)' },
+            ],
+        },
+    ];
 
-        const STORAGE_KEY = 'disciplineChartChecksHTML';
-        let checkedState = {};
-        const container = document.getElementById('schedule-container');
+    const STORAGE_KEY = 'disciplineChartChecksHTML_V2';
+    const LAST_ACTIVITY_KEY = 'disciplineChartLastActivityDate';
+    
+    let checkedState = {};
+    const container = document.getElementById('schedule-container');
+    const statusBar = document.getElementById('status-bar');
 
-        // --- Core Functions ---
+    const getCurrentDateString = () => new Date().toISOString().split('T')[0];
+    const getTaskCount = () => DISCIPLINE_SCHEDULE.reduce((c, s) => c + s.tasks.length, 0);
+    const getCompletedCount = () => Object.values(checkedState).filter(c => c).length;
 
-        const initializeCheckedState = () => {
-            const savedChecks = localStorage.getItem(STORAGE_KEY);
-            if (savedChecks) {
-                try {
-                    checkedState = JSON.parse(savedChecks);
-                } catch (e) {
-                    console.error("Error parsing saved state:", e);
-                    checkedState = {}; // Reset on parse error
-                }
-            } else {
-                // Default state: all unchecked
+    const initializeCheckedState = () => {
+        const currentDate = getCurrentDateString();
+        const savedDate = localStorage.getItem(LAST_ACTIVITY_KEY);
+        const savedChecks = localStorage.getItem(STORAGE_KEY);
+        let resetNeeded = false;
+
+        if (savedDate !== currentDate) {
+            resetNeeded = true;
+            checkedState = {};
+        } else if (savedChecks) {
+            try {
+                checkedState = JSON.parse(savedChecks);
+            } catch {
                 checkedState = {};
-                DISCIPLINE_SCHEDULE.forEach(section => {
-                    section.tasks.forEach(task => {
-                        checkedState[task.id] = false;
-                    });
-                });
+                resetNeeded = true;
             }
-        };
-
-        const saveState = () => {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedState));
-        };
-
-        const handleToggle = (taskId) => {
-            checkedState[taskId] = !checkedState[taskId];
-            saveState();
-            renderChart(); // Re-render the chart to reflect the change
-        };
-
-        const renderTaskItem = (task) => {
-            const checked = checkedState[task.id];
-            const checkboxIcon = checked 
-                ? '<i data-lucide="check-circle" class="text-emerald-500 w-full h-full task-icon-checked"></i>'
-                : '<i data-lucide="circle" class="text-gray-300 w-full h-full hover:text-gray-400 transition-colors print-hide"></i>';
-            
-            const textClass = checked 
-                ? 'line-through text-gray-500 task-text-checked'
-                : 'text-gray-800 task-text-unchecked';
-
-            return `
-                <div 
-                    class="flex items-start py-3 px-3 hover:bg-gray-50 transition-colors cursor-pointer rounded-lg print:p-2 print:border-b print:border-gray-200 print:cursor-default"
-                    onclick="handleToggle('${task.id}')"
-                >
-                    <div class="flex-shrink-0 mt-0.5 w-6 h-6 print:w-4 print:h-4 print:mt-1 print:hidden">
-                        ${checkboxIcon}
-                    </div>
-                    <!-- Printable Text with Checkmark Placeholder -->
-                    <p class="ml-3 flex-grow text-sm md:text-base line-through-print ${textClass}">
-                        ${task.text}
-                    </p>
-                </div>
-            `;
-        };
-
-        const renderChart = () => {
-            let html = '';
-            
-            DISCIPLINE_SCHEDULE.forEach(section => {
-                const tasksHtml = section.tasks.map(renderTaskItem).join('');
-
-                html += `
-                    <div class="bg-white shadow-xl rounded-2xl overflow-hidden border-l-8 ${section.color} transform hover:scale-[1.01] transition-transform duration-300">
-                        <div class="p-5 bg-gray-50 flex items-center print:bg-white print:p-3">
-                            <div class="text-3xl mr-3 print:text-xl">${section.icon}</div>
-                            <div>
-                                <h2 class="text-lg md:text-xl font-extrabold text-gray-900 leading-tight">${section.title}</h2>
-                                <p class="text-sm font-mono text-gray-600 print:text-xs print:font-sans">${section.time}</p>
-                            </div>
-                        </div>
-                        <div class="p-4 divide-y divide-gray-100 print:p-0 print:divide-y-0">
-                            ${tasksHtml}
-                        </div>
-                    </div>
-                `;
+        }
+        let needsSave = false;
+        DISCIPLINE_SCHEDULE.forEach(section => {
+            section.tasks.forEach(task => {
+                if (checkedState[task.id] === undefined) {
+                    checkedState[task.id] = false;
+                    needsSave = true;
+                }
             });
-            
-            container.innerHTML = html;
-            // Renders the Lucide icons after injection
-            lucide.createIcons(); 
-        };
+        });
+        if (resetNeeded || needsSave) {
+            localStorage.setItem(LAST_ACTIVITY_KEY, currentDate);
+            saveState();
+        }
+    };
 
-        const handleReset = () => {
-            if (confirm('Are you sure you want to reset all daily progress?')) {
-                localStorage.removeItem(STORAGE_KEY);
-                initializeCheckedState();
-                renderChart();
-            }
-        };
+    const saveState = () => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedState));
+        renderStatusBar();
+    };
 
-        const handlePrint = () => {
-            window.print();
-        };
+    const handleToggle = id => {
+        checkedState[id] = !checkedState[id];
+        saveState();
+        renderChart();
+    };
 
-
-        // --- Initialization on page load ---
-        window.onload = () => {
-            initializeCheckedState();
+    const handleManualReset = () => {
+        if (confirm('Reset ALL daily progress?')) {
+            checkedState = {};
+            DISCIPLINE_SCHEDULE.forEach(s => s.tasks.forEach(t => checkedState[t.id] = false));
+            localStorage.setItem(LAST_ACTIVITY_KEY, getCurrentDateString());
+            saveState();
             renderChart();
-        };
-    </script>
+        }
+    };
+
+    const handlePrint = () => window.print();
+
+    const renderTaskItem = task => {
+        const checked = checkedState[task.id];
+        const icon = checked
+            ? '<i data-lucide="check-circle" class="text-emerald-500 w-full h-full task-icon-checked"></i>'
+            : '<i data-lucide="circle" class="text-gray-300 w-full h-full hover:text-gray-400 transition-colors print-hide"></i>';
+        const textClass = checked ? 'line-through text-gray-500 task-text-checked' : 'text-gray-800 font-medium task-text-unchecked';
+        return `
+        <div class="flex items-start py-3 px-3 hover:bg-gray-50 transition-colors cursor-pointer rounded-lg print:p-2 print:border-b print:border-gray-200 print:cursor-default"
+            onclick="handleToggle('${task.id}')">
+            <div class="flex-shrink-0 mt-0.5 w-6 h-6 print:w-4 print:h-4 print:mt-1 print:hidden">${icon}</div>
+            <p class="ml-3 flex-grow text-sm md:text-base line-through-print ${textClass}">${task.text}</p>
+        </div>`;
+    };
+
+    const renderChart = () => {
+        let html = '';
+        DISCIPLINE_SCHEDULE.forEach(section => {
+            const tasks = section.tasks.map(renderTaskItem).join('');
+            html += `
+            <div class="bg-white shadow-xl rounded-2xl overflow-hidden border-l-8 ${section.color} transform hover:scale-[1.01] transition-transform duration-300">
+                <div class="p-5 bg-gray-50 flex items-center print:bg-white print:p-3">
+                    <div class="text-3xl mr-3 print:text-xl">${section.icon}</div>
+                    <div>
+                        <h2 class="text-lg md:text-xl font-extrabold text-gray-900 leading-tight">${section.title}</h2>
+                        <p class="text-sm font-mono text-gray-600 print:text-xs print:font-sans">${section.time}</p>
+                    </div>
+                </div>
+                <div class="p-4 divide-y divide-gray-100 print:p-0 print:divide-y-0">${tasks}</div>
+            </div>`;
+        });
+        container.innerHTML = html;
+        lucide.createIcons();
+    };
+
+    const renderStatusBar = () => {
+        const currentDate = getCurrentDateString();
+        const completed = getCompletedCount();
+        const total = getTaskCount();
+        const progress = (completed / total) * 100;
+
+        let color, message;
+        if (total === completed) {
+            color = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+            message = `🎉 **${currentDate}** — Daily goal complete! 100% of tasks done.`;
+        } else if (completed > 0) {
+            color = 'bg-yellow-100 text-yellow-800 border-yellow-300';
+            message = `🎯 **${currentDate}** — ${completed}/${total} tasks completed (${progress.toFixed(0)}%).`;
+        } else {
+            color = 'bg-blue-100 text-blue-800 border-blue-300';
+            message = `🔥 **${currentDate}** — Day started! Tap a task to check it off.`;
+        }
+        statusBar.className = `mb-6 px-4 py-3 text-center rounded-xl font-semibold border ${color} print-hide`;
+        statusBar.innerHTML = message;
+    };
+
+    window.onload = () => {
+        window.handleToggle = handleToggle;
+        window.handleManualReset = handleManualReset;
+        window.handlePrint = handlePrint;
+        initializeCheckedState();
+        renderChart();
+    };
+</script>
 </body>
 </html>
